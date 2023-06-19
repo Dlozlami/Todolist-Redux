@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Home from './pages/home';
-import Login from './pages/login';
+import Login from './components/loginCard';
 import Header from './components/header';
 import NoPage from "./pages/noPage";
 import MyList from './pages/mylist';
