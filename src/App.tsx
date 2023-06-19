@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
-function App() {
+import Home from './pages/home';
+import Login from './pages/login';
+import Header from './components/header';
+import NoPage from "./pages/noPage";
+import MyList from './pages/mylist';
+import Register from './pages/register';
+import { useState } from 'react';
+
+export default function App() {
+
+  const [userProfile,setUserProfile] = useState({
+      id: "",
+      password: "",
+      name: "",
+      surname: "",
+      email: "",
+      phone: "",
+      list: []
+    });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Routes>
+        <Route path="/" element={<Header userProfile={userProfile} setUserProfile={setUserProfile}/>}>
+          <Route index element={<Home userProfile={userProfile} setUserProfile={setUserProfile}/>} />
+          <Route path="Register" element={<Register userProfile={userProfile} setUserProfile={setUserProfile}/>} />
+          <Route path="Login" element={<Login userProfile={userProfile} setUserProfile={setUserProfile}/>} />
+          <Route path="ToDoList" element={
+            userProfile?
+            <MyList  userProfile={userProfile} setUserProfile={setUserProfile}/>
+            :
+            <Navigate to="/"/>
+          } />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+  </main>
   );
 }
-
-export default App;
