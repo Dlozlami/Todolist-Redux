@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 
-export default function Header({user,setUser}){
+export default function Header(){
     return(
         <>
         <nav>

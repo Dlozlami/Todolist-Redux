@@ -11,29 +11,14 @@ import { useState } from 'react';
 
 export default function App() {
 
-  const [userProfile,setUserProfile] = useState({
-      id: "",
-      password: "",
-      name: "",
-      surname: "",
-      email: "",
-      phone: "",
-      list: []
-    });
-
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Header userProfile={userProfile} setUserProfile={setUserProfile}/>}>
-          <Route index element={<Home userProfile={userProfile} setUserProfile={setUserProfile}/>} />
-          <Route path="Register" element={<Register userProfile={userProfile} setUserProfile={setUserProfile}/>} />
-          <Route path="Login" element={<Login userProfile={userProfile} setUserProfile={setUserProfile}/>} />
-          <Route path="ToDoList" element={
-            userProfile?
-            <MyList  userProfile={userProfile} setUserProfile={setUserProfile}/>
-            :
-            <Navigate to="/"/>
-          } />
+        <Route path="/" element={<Header/>}>
+          <Route index element={<Home/>} />
+          <Route path="Register" element={<Register />} />
+          <Route path="Login" element={<Login/>} />
+          <Route path="ToDoList" element={<MyList />}/>
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

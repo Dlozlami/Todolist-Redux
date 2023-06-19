@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import axios from "axios";
 
-export default function MyList({ user, setUser }) {
+export default function MyList() {
     const [isUpdating, setIsUpdating] = useState(false);
     const [inputValues, setInputValues] = useState({
       id: "",
@@ -88,12 +88,13 @@ export default function MyList({ user, setUser }) {
     const remove = (listItem) => {
         let newList = [...inputValues.list];
         newList = newList.filter((tasks) => tasks.id !== listItem); 
-  
+
         axios.patch("http://localhost:4000/accounts/" + user.id, { list: newList })
             .then(response => {
             console.log(response.data);
         })
         .catch(error => console.error(error));
+        setInputValues(prevState => ({ ...prevState, list: newList }));
     }
   
     const update = (listItem) => {
@@ -114,8 +115,40 @@ export default function MyList({ user, setUser }) {
       document.getElementById("statusU").value = listItem.status;
     }
 
+    const setDeadline = (taskDate)=>
+    {
+        let deadline = new Date(taskDate).getTime();
+        let today = new Date().getTime();
+        
+        /*const deadlineTime = ()=>{
+            let dateList =[];
+            if(deadline.indexOf('/') !== -1){
+                dateList = deadline.split("/").map((datum)=>(parseInt(datum)));
+            }
+    
+            if (deadline.indexOf('-') !== -1) {
+                dateList = deadline.split("-").map((datum)=>(parseInt(datum)));
+            }
+    
+            if(dateList[0]>dateList[2])
+            {   
+                return new Date(dateList[0],dateList[1],dateList[2]).getTime();
+            }
+    
+            if(dateList[0]<dateList[2])
+            {
+                
+                return new Date(dateList[2],dateList[1],dateList[0]).getTime();
+            }
+        }*/
+
+        return(
+            today<deadline?<div style={{width:"20vw",paddingLeft:'1vw'}}>{taskDate}</div>:<div style={{width:"20vw",paddingLeft:'1vw',backgroundColor:'lightpink',color:'red'}}>Expired</div>
+        );
+    }
+
     return(
-        <div className='mylistContainer'>
+        <div id='mainDiv' className='mylistContainer'>
             <div className='listBox w3-round-large w3-white w3-card-4'>
                 <h1 style={{fontWeight:'500'}} className="w3-text-blue">To Do List</h1>
                 <div className='listFormat w3-large'>
@@ -128,17 +161,18 @@ export default function MyList({ user, setUser }) {
                 
                 <div>
                     {inputValues.list.length?inputValues.list.map((items)=>(
-                        <div key={items.id} className='taskItems' style={isExpired}>
-                            <div style={{width:"20vw",paddingLeft:'1vw'}}>{items.deadline}</div>
+                        <div id='taskItems' key={items.id} className='taskItems'>
+                            {setDeadline(items.deadline)}
                             <div style={{width:"45vw",paddingLeft:'1vw'}}>{items.task}</div>
                             {setPriority(items.priority)}
-                            {setStatus(items)}
+                            {setStatus(items.status)}
                             <div style={{width:"10vw",display:'flex',justifyContent:'space-evenly'}}>
                                 <button style={{fontSize:'large',marginRight:'1vw',border:'none'}} onClick={() => update(items)}>&#9998;</button>
                                 <button style={{fontSize:'x-large',marginRight:'1vw',border:'none'}} onClick={() => remove(items.id)}>&#128465;</button>
                             </div>
                         </div>
-                    )):
+                    ))
+                    :
                     <div>
                         No list items.<br/>
                     </div>
@@ -191,57 +225,40 @@ export default function MyList({ user, setUser }) {
     );
 }
 
-function setPriority(priorityNum)
+function setPriority(priority)
 {
-    if(priorityNum==='Low'){
+    if(priority==='Low'){
         return(
             <div className='w3-green' style={{width:"15vw",paddingLeft:'1vw'}}>Low</div>
         );
     }
-    if(priorityNum==='Medium'){
+    if(priority==='Medium'){
         return(
             <div className='w3-orange' style={{width:"15vw",paddingLeft:'1vw'}}>Medium</div>
         );
     }
-    if(priorityNum==='High'){
+    if(priority==='High'){
         return(
             <div className='w3-red' style={{width:"15vw",paddingLeft:'1vw'}}>High</div>
         );
     }
 }
 
-function setStatus(item)
+
+function setStatus(status)
 {
-    if(item.status==='Pending'){
+    if(status==='Pending'){
         return(
             <div className='w3-gray' style={{width:"10vw",color:'darkgray',paddingLeft:'1vw'}}>Pending</div>
         );
     }
-    if(item.status==='Complete'){
+    if(status==='Complete'){
         return(
             <div className='w3-blue' style={{width:"10vw",paddingLeft:'1vw'}}>Complete</div>
         );
     }
 }
-// eslint-disable-next-line
-function isExpired(deadline)
-{
-    const date = new Date(deadline);
-    console.log(date);
 
-    const slash = str.indexOf('/');
-    const dash = str.indexOf('-');
-
-    if (slash !== -1) {
-        
-    }
-
-    if (dash !== -1) {
-        
-    }
-
-    return({});
-}
 
 function generateRandomString(){
     const characters = '0123456789';

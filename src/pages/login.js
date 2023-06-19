@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-export default function Login({ user, setUser}){
+export default function Login(){
 
     const navigate = useNavigate();
     const [validPwd,setValidPwd] = useState(true);
