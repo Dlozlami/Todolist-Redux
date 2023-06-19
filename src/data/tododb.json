@@ -1,0 +1,102 @@
+{
+  "accounts": [
+    {
+      "id": "dlozim",
+      "password": "12345",
+      "name": "",
+      "surname": "",
+      "email": "",
+      "phone": "",
+      "list": [
+        {
+          "id": "7649169",
+          "task": "Email crew for new film schedule",
+          "priority": "Low",
+          "deadline": "2023-06-16",
+          "status": "Pending"
+        },
+        {
+          "id": "9910665",
+          "task": "Dr Appointment",
+          "priority": "High",
+          "deadline": "2023-06-25",
+          "status": "Pending"
+        },
+        {
+          "id": "0760224",
+          "task": "Check on takeAlot order",
+          "priority": "Medium",
+          "deadline": "2023-12-15",
+          "status": "Pending"
+        },
+        {
+          "id": "4023341",
+          "task": "Go to Paris",
+          "priority": "Low",
+          "deadline": "2023-07-09",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "rtf44rrg",
+      "password": "12345",
+      "name": "Dlozi",
+      "surname": "Mthethwa",
+      "email": "dlozi.mthethwa@gmail.com",
+      "phone": "0763509451",
+      "list": [
+        {
+          "id": "1529371",
+          "task": "Film scifi short film",
+          "priority": "Medium",
+          "deadline": "2023-06-30",
+          "status": "Pending"
+        },
+        {
+          "id": "2106275",
+          "task": "Go to Paris",
+          "priority": "Low",
+          "deadline": "2023-06-30",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "rteerrwqq",
+      "password": "12345",
+      "name": "Sam",
+      "surname": "Jones",
+      "email": "taveejaji@gmail.com",
+      "phone": "0747091741",
+      "list": []
+    },
+    {
+      "id": "ewwedsd",
+      "password": "12345",
+      "name": "Jessica",
+      "surname": "Atreties",
+      "email": "dlozi.mthethwa@gmail.com",
+      "phone": "0763509451",
+      "list": []
+    },
+    {
+      "id": "pl[kqef",
+      "password": "12345",
+      "name": "Dlozi",
+      "surname": "Jones",
+      "email": "dlozi@GreaterThanAIDSAfrica.org",
+      "phone": "0729154542",
+      "list": []
+    },
+    {
+      "id": "efsdva",
+      "password": "fadffafa",
+      "name": "Ntethelelo Lucky",
+      "surname": "Nhlabathi",
+      "email": "dlozi@GreaterThanAIDSAfrica.org",
+      "phone": "0729154542",
+      "list": []
+    }
+  ]
+}

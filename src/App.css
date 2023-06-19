@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px red solid; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+    background-image: url('../public/assets/images/Nepal.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav{
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.listFormat{
+    display: flex;
+    background-color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mylistContainer{
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    align-self: center;
+    justify-content: space-evenly;
+    margin-top: 5vh;
+}
+
+.taskItems{
+    display: flex;
+    border: 1px black solid;
+    align-items: center;
+}
+
+.listBox{
+    padding: 20px;
+    margin-bottom: 5vh;
+}
+
+button{
+    cursor: pointer;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+label{
+    margin-right: 1vw;
+}
+
+input{
+    width: 25vw;
+    background-color: whitesmoke;
+    border: 1px black solid;
+    height: 4vh;
+    padding-left: 1vw;
+}
+
+select{
+    height: 4vh;
+
+}
+
+.regContainer{
+    display: flex;
+    width: 90vw;
+    padding: 30px;
+    height: 85vh;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.formStyles{
+    background-color: white;
+    padding: 50px;
+    width: 50vw;
 }
