@@ -1,15 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
-    username:'',
-    password:''
-}
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const loginSlice = createSlice({
     name:"login",
-    initialState,
+    initialState:{
+        username:'',
+        password:''
+    },
     reducers:{
-        login: ()=>{
+        login: (state,action: PayloadAction<object>)=>{
             let userId = document.getElementById("id").value;
             let pwd = document.getElementById("password").value;
     
@@ -26,9 +25,10 @@ export const loginSlice = createSlice({
                 console.log(error);
                 setValidUsername(false);
               });
+        }
     }
 
-});
+})
 
 
 
