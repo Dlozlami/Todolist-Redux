@@ -18,7 +18,7 @@ export default function Login(){
             if(result.data.password===pwd){
                 setUser(result.data);
                 localStorage.setItem("userData",result.data);
-                navigate('/ToDoList');
+                //navigate('/ToDoList');
             }
           })
           .catch(function (error) {
